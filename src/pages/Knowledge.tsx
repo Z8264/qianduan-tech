@@ -48,9 +48,9 @@ const data = [
       {
         title: 'Algorithms',
         des: 'This repository contains EcmaScript based examples of many popular algorithms.',
-        link: 'https://github.com/Z8264/algorithms',
-        progress: 0,
-        rate: 0,
+        link: 'https://github.com/Z8264/algorithms-ecmascript',
+        progress: 20,
+        rate: 2,
         stars: 0,
         v: 0.1,
       },
