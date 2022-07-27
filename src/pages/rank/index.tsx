@@ -1,6 +1,9 @@
 import { useState } from 'react';
-import { Row, Col, Space, Card, Drawer, Button, List, Typography } from 'antd';
+import { Row, Col, Space, Card, Drawer, Button, List, Affix } from 'antd';
 import RankList from './components/RankList';
+import SideInfo from './components/SideInfo';
+import './style.less';
+
 function Pages() {
   const [visible, setVisible] = useState(false);
 
@@ -112,29 +115,31 @@ function Pages() {
 
   return (
     <div style={{ background: '#f1f1f1' }}>
-      <div style={{ background: '#f1f1f1', height: 20 }}></div>
-      <Row style={{ width: 960, margin: '0 auto' }}>
-        <Col span={18}>
-          <Button type="primary" onClick={showDrawer}>
-            Open drawer
-          </Button>
-          <RankList />
-        </Col>
-        <Col span={6}>
-          <Card title="Card" size="small">
-            <p>Card content</p>
-            <p>Card content</p>
-          </Card>
-          <Card title="Card" size="small" style={{ marginTop: 10 }}>
-            <p>Card content</p>
-            <p>Card content</p>
-          </Card>
-          <Card title="Card" size="small" style={{ marginTop: 10 }}>
-            <p>Card content</p>
-            <p>Card content</p>
-          </Card>
-        </Col>
-      </Row>
+      <Affix>
+        <div
+          style={{
+            position: 'relative',
+            background: '#fff',
+            boxShadow: '1px 1px 0 rgba(0,0,0,.2)',
+            height: 50,
+            zIndex: 100,
+          }}
+        ></div>
+      </Affix>
+
+      <div className="page">
+        <Button type="primary" onClick={showDrawer}>
+          Open drawer
+        </Button>
+        <Row>
+          <Col span={18}>
+            <RankList />
+          </Col>
+          <Col span={6}>
+            <SideInfo />
+          </Col>
+        </Row>
+      </div>
 
       <Drawer
         title="Drawer with extra actions"

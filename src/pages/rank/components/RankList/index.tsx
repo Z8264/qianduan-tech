@@ -50,19 +50,14 @@ const data = [
 
 const Rank = () => (
   <div className="rank">
-    <Affix offsetTop={0}>
-      <div className="rank-header">
-        {/* <MenuUnfoldOutlined className="rank-menu" /> */}
-        <span className="rank-title">
-          用户界面框架 <em>UI Frameworks</em>
-        </span>
-
-        <span className="rank-tag">卓越榜单 2022</span>
-      </div>
-    </Affix>
-    <div className="rank-des">
-      <Alert message="用户界面框架（UI Frameworks），" type="warning" />
+    <div className="rank-header">
+      {/* <MenuUnfoldOutlined className="rank-menu" /> */}
+      <span className="rank-title">
+        用户界面框架 <em>UI Frameworks</em>
+      </span>
+      <span className="rank-tag">卓越榜单 2022</span>
     </div>
+
     <List
       itemLayout="vertical"
       size="large"
