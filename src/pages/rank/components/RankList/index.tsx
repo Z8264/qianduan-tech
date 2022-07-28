@@ -1,4 +1,3 @@
-import { MenuUnfoldOutlined } from '@ant-design/icons';
 import {
   Avatar,
   List,
@@ -14,9 +13,9 @@ import {
   Affix,
 } from 'antd';
 
-import './rank.less';
+import './style.less';
 
-const data = [
+const d = [
   {
     href: 'https://ant.design',
     title: `ant design part `,
@@ -48,74 +47,95 @@ const data = [
   },
 ];
 
-const Rank = () => (
-  <div className="rank">
-    <div className="rank-header">
-      {/* <MenuUnfoldOutlined className="rank-menu" /> */}
-      <span className="rank-title">
-        用户界面框架 <em>UI Frameworks</em>
-      </span>
-      <span className="rank-tag">卓越榜单 2022</span>
-    </div>
-
-    <List
-      itemLayout="vertical"
-      size="large"
-      dataSource={data}
-      footer={
-        <Empty
-          image={Empty.PRESENTED_IMAGE_SIMPLE}
-          description={<span>End</span>}
-        />
-      }
-      renderItem={(item) => (
-        <List.Item
-          key={item.title}
-          extra={
-            <ul className="score">
-              <li className="score-li">
-                <span className="score-label">Pop</span>
-                <Progress percent={30} steps={10} format={(percent) => ''} />
-              </li>
-              <li className="score-li">
-                <span className="score-label">Qua</span>
-                <Progress percent={30} steps={10} format={(percent) => ''} />
-              </li>
-              <li className="score-li">
-                <span className="score-label">Eco</span>
-                <Progress percent={30} steps={10} format={(percent) => ''} />
-              </li>
-            </ul>
-          }
-        >
-          <List.Item.Meta
-            avatar={
-              <a href={item.href} target="_blank">
-                <Avatar src={item.avatar} />
-              </a>
-            }
-            title={
-              <>
-                <a href={item.href} target="_blank">
-                  {item.title}
-                </a>
-                <Space size={5} style={{ float: 'right' }}>
-                  <Tag color="blue" style={{ margin: 0 }}>
-                    114 contributors
-                  </Tag>
-                  <Tag color="blue" style={{ margin: 0 }}>
-                    1.4k stars
-                  </Tag>
-                </Space>
-              </>
-            }
-            description={item.description}
+const RankList = (props) => {
+  const { data } = props;
+  if (!data.cn || !data.list.length) return <></>;
+  return (
+    <div className="rank-list">
+      <List
+        itemLayout="vertical"
+        size="large"
+        dataSource={data.list}
+        header={
+          <div className="rank-header">
+            <span className="rank-header-title">
+              {data.cn} <em>{data.en}</em>
+            </span>
+            <span className="rank-header-tag">卓越榜单 2022</span>
+          </div>
+        }
+        footer={
+          <Empty
+            image={Empty.PRESENTED_IMAGE_SIMPLE}
+            description={<span>End</span>}
           />
-          {item.content && <Alert description={item.content} />}
-        </List.Item>
-      )}
-    />
-  </div>
-);
+        }
+        renderItem={(item) => (
+          <List.Item
+            key={item.title}
+            extra={
+              <ul className="rank-score">
+                <li className="rank-score-item">
+                  <span className="rank-score-label">Pop</span>
+                  <Progress
+                    percent={item.score.pop}
+                    steps={10}
+                    format={(percent) => ''}
+                  />
+                </li>
+                <li className="rank-score-item">
+                  <span className="rank-score-label">Qua</span>
+                  <Progress
+                    percent={item.score.qua}
+                    steps={10}
+                    format={(percent) => ''}
+                  />
+                </li>
+                <li className="rank-score-item">
+                  <span className="rank-score-label">Eco</span>
+                  <Progress
+                    percent={item.score.eco}
+                    steps={10}
+                    format={(percent) => ''}
+                  />
+                </li>
+              </ul>
+            }
+          >
+            <List.Item.Meta
+              avatar={
+                <a href={item.href} target="_blank">
+                  <Avatar
+                    className="rank-logo"
+                    shape="square"
+                    size={50}
+                    src={item.logo}
+                  />
+                </a>
+              }
+              title={
+                <>
+                  <a href={item.href} target="_blank">
+                    {item.name}
+                  </a>
+                  <Space size={5} style={{ float: 'right' }}>
+                    <Tag color="blue" style={{ margin: 0 }}>
+                      {item.contributors} contributors
+                    </Tag>
+                    <Tag color="blue" style={{ margin: 0 }}>
+                      {item.stars} stars
+                    </Tag>
+                  </Space>
+                </>
+              }
+              description={item.des}
+            />
+            {item.comment && <Alert description={item.comment} />}
+          </List.Item>
+        )}
+      />
+    </div>
+  );
+};
 
-export default Rank;
+export default RankList;
