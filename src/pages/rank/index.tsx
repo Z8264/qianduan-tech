@@ -5,10 +5,10 @@ import PageHeader from '@/components/PageHeader';
 
 import RankList from './components/RankList';
 import SideInfo from './components/SideInfo';
-import RankMenu from './components/RankMenu';
+import DrawerMenu from './components/DrawerMenu';
 import './style.less';
 
-import Menu from './components/Menu';
+import BaseMenu from './components/BaseMenu';
 import data from '@/RANK_DATA/index.js';
 
 function Pages() {
@@ -16,14 +16,17 @@ function Pages() {
   const [current, setCurrent] = useState();
   return (
     <div style={{ background: '#f1f1f1' }}>
-      <PageHeader />
+      <PageHeader path="rank" />
 
       <div className="page">
         {!current ? (
-          <Menu data={data} current={current} onChange={setCurrent} />
+          <>
+            <p>Github 开源技术解决方案</p>
+            <BaseMenu data={data} current={current} onChange={setCurrent} />
+          </>
         ) : (
           <>
-            <RankMenu data={data} current={current} onChange={setCurrent} />
+            <DrawerMenu data={data} current={current} onChange={setCurrent} />
             <Row>
               <Col span={18}>
                 <RankList data={current} />

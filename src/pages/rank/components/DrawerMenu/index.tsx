@@ -3,7 +3,7 @@ import { MenuUnfoldOutlined } from '@ant-design/icons';
 
 import { Drawer, Row, Col, List, Button, Alert } from 'antd';
 import './style.less';
-import Menu from '../Menu';
+import BaseMenu from '../BaseMenu';
 
 function RankMenu(props) {
   const { data, current, onChange } = props;
@@ -43,7 +43,7 @@ function RankMenu(props) {
         onClose={onClose}
         visible={visible}
       >
-        <Menu data={data} current={current} onChange={onClick} />
+        <BaseMenu data={data} current={current} onChange={onClick} />
       </Drawer>
     </>
   );
