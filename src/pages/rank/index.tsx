@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { Row, Col, Space, Card, Drawer, Button, List, Affix } from 'antd';
 
-import PageHeader from '@/components/PageHeader';
-
 import RankList from './components/RankList';
 import SideInfo from './components/SideInfo';
 import DrawerMenu from './components/DrawerMenu';
@@ -16,8 +14,6 @@ function Pages() {
   const [current, setCurrent] = useState();
   return (
     <div style={{ background: '#f1f1f1' }}>
-      <PageHeader path="rank" />
-
       <div className="page">
         {!current ? (
           <>
