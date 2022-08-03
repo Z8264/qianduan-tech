@@ -66,10 +66,11 @@ export default function Layout() {
               items={items}
             />
           </div>
-          <div className={styles.func}>登录/注册</div>
+          <div className={styles.func}>封闭测试阶段</div>
         </div>
       </div>
       <Outlet />
+      <div className={styles.footer}></div>
     </>
   );
 }
