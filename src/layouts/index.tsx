@@ -1,13 +1,13 @@
-import { Link, Outlet, history } from 'umi';
 import {
-  HomeOutlined,
-  HddOutlined,
-  BookOutlined,
   AppstoreOutlined,
+  BookOutlined,
   ClusterOutlined,
+  HddOutlined,
+  HomeOutlined,
 } from '@ant-design/icons';
-import { Menu, Affix } from 'antd';
+import { Menu } from 'antd';
 import { useState } from 'react';
+import { history, Outlet } from 'umi';
 import styles from './index.less';
 
 import 'antd/dist/antd.css';
@@ -24,15 +24,14 @@ const items = [
     icon: <ClusterOutlined />,
   },
   {
-    label: '榜单',
-    key: 'rank',
-    icon: <HddOutlined />,
-  },
-  {
     label: '教程',
     key: 'course',
     icon: <BookOutlined />,
-    disabled: true,
+  },
+  {
+    label: '开源图谱',
+    key: 'rank',
+    icon: <HddOutlined />,
   },
   {
     label: '孵化',
